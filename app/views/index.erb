@@ -1,11 +1,24 @@
 <div>
-<form action="/" method="post">
-    <label> Enter your user handle </label>
-    <input type="text" name="handle" placeholder="handle"></input>
-    <label> Email </label>
-    <input type="text" name="email" placeholder="john@doe.com"></input>
-    <label> Password </label>
-    <input type="text" name="password_hash" placeholder="*****"></input>
-    <input type="submit" value="Sign me up">
-</form>
+<% if current_user %>
+	<p>u are logged in dumbass</p>
+	<a href="/logout"><button type="button">Log out!</button></a>
+<% else %>
+	<form action="/" method="post">
+	    <label> Enter your handle </label>
+	    <input type="text" name="handle" placeholder="handle"></input>
+	    <label> Password </label>
+	    <input type="password" name="password_hash" placeholder="*****"></input>
+	    <input type="submit" value="Log in!">
+	</form>
+
+	<form action="/" method="post">
+	    <label> Enter your user handle </label>
+	    <input type="text" name="handle" placeholder="handle"></input>
+	    <label> Email </label>
+	    <input type="text" name="email" placeholder="john@doe.com"></input>
+	    <label> Password </label>
+	    <input type="password" name="password_hash" placeholder="*****"></input>
+	    <input type="submit" value="Sign me up">
+	</form>
+<% end %>
 </div>

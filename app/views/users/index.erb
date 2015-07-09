@@ -1,21 +1,23 @@
 <!-- this div shows user info -->
 <div>
-	<p>@<%= @user.handle %></p>
+	<p><%= @user.handle %></p>
 	<p>Tweets: <%= @user.tweets.count %></p>
 </div>
+
+<p><%= current_user.handle %></p>
 
 
 <!-- this div contains all the tweets (tweet feed) -->
 <div>
 	<ul>
 	<% @tweets.each do |tweet|  %>
-		<a href="/<%= tweet.user_id %>">@<%= tweet.user.handle %></a>
+		<a href="/<%= tweet.user_id %>"><%= tweet.user.handle %></a>
 		<li><%= tweet.text %></li>
 	<% end %>
 	</ul>
 </div>
 
-<!-- ######################## Andrew and Charlotte -->
+
 <div>
   <h1>Create a new Tweet!</h1>
   <form action="/tweets/new" method="post">
@@ -24,5 +26,8 @@
     <input type="submit" value="TWEET!!!">
   </form>
 </div>
-<!-- ######################## Andrew and Charlotte -->
+
+<div>
+	<a href="/logout"><button type="button">Log out!</button></a>
+</div>
 

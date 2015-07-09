@@ -1,7 +1,4 @@
 ######################## Andrew and Charlotte
-get '/tweets/new' do
-  erb :"users/index"
-end
 
 post '/tweets/new' do
   Tweet.create(text: params[:text])

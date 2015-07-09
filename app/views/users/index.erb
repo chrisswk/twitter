@@ -11,7 +11,7 @@
 <div>
 	<ul>
 	<% @tweets.each do |tweet|  %>
-		<a href="/<%= tweet.user_id %>"><%= tweet.user.handle %></a>
+		<a href="/<%= tweet.user_id %>">this is the user id<%= tweet.user.id %></a>
 		<li><%= tweet.text %></li>
 	<% end %>
 	</ul>

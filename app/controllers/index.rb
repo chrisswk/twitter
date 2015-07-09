@@ -21,3 +21,12 @@ post '/' do
 	session[:user_id] = @user.id
 	erb :"users/index"
 end
+
+post '/login' do
+	@user = User.find_by(handle: params[:handle])
+	@tweet = Tweet.all
+
+	session[:user_id] = @user.id
+	erb :"users/index"
+
+end

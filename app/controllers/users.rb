@@ -6,7 +6,10 @@ end
 ######################## Andrew and Charlotte
 
 post '/tweets/new' do
-  Tweet.create(text: params[:text])
+	@user = current_user
+  @tweets = Tweet.all
+  Tweet.create(text: params[:text], user_id: current_user.id)
+
   erb :"users/index"
 end
 ######################## Andrew and Charlotte

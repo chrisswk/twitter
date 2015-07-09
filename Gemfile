@@ -8,6 +8,10 @@ gem 'pg'
 gem 'sinatra'
 gem 'sinatra-contrib'
 
+#authentication
+gem 'bcrypt'
+
+
 gem 'activesupport', '~>4.2.0'
 gem 'activerecord', '~>4.2.0'
 

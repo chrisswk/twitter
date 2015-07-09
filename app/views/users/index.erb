@@ -1,0 +1,15 @@
+<div>
+	<p>@<%= @user.handle %></p>
+	<p>Tweets: <%= @user.tweets.count %></p>
+</div>
+
+
+<!-- this div contains all the tweets (tweet feed) -->
+<div>
+	<ul>
+	<% @tweets.each do |tweet|  %>
+		<a href="/<%= tweet.user_id %>">@<%= tweet.user.handle %></a>
+		<li><%= tweet.text %><a h</li>
+	<% end %>
+	</ul>
+</div>

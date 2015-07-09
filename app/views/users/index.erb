@@ -10,7 +10,7 @@
 	<ul>
 	<% @tweets.each do |tweet|  %>
 		<a href="/<%= tweet.user_id %>">@<%= tweet.user.handle %></a>
-		<li><%= tweet.text %><a h</li>
+		<li><%= tweet.text %></li>
 	<% end %>
 	</ul>
 </div>

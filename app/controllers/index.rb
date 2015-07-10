@@ -18,7 +18,7 @@ post '/signup' do
 	@tweets = Tweet.all
 	@user = User.new(handle: params[:handle], email: params[:email], password_hash: params[:password_hash])
 	@user.password = params[:password_hash]
-	if @user.save!
+	if @user.save
 		session[:user_id] = @user.id
 		redirect "/users/#{@user.id}"
 	else

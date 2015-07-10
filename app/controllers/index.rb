@@ -19,7 +19,8 @@ post '/signup' do
 	@tweets = Tweet.all
 	@user = User.create(handle: params[:handle], email: params[:email], password_hash: params[:password_hash])
 	session[:user_id] = @user.id
-	erb :"users/index"#should be users/:id
+	redirect "/users/#{@user.id}"
+	#should be users/:id
 end
 
 post '/login' do
@@ -27,5 +28,4 @@ post '/login' do
 	@tweet = Tweet.all
 	session[:user_id] = @user.id
 	redirect "/users/#{@user.id}"
-
 end

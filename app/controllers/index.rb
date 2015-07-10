@@ -14,19 +14,18 @@ get '/logout' do
 	session[:user_id] = nil
 	redirect '/'
 end
-
-post '/' do
+#after a user signs in, it redirects to the user profile
+post '/signup' do
 	@tweets = Tweet.all
-	@user = User.create(handle: "@"+params[:handle], email: params[:email], password_hash: params[:password_hash])
+	@user = User.create(handle: params[:handle], email: params[:email], password_hash: params[:password_hash])
 	session[:user_id] = @user.id
-	erb :"users/index"
+	erb :"users/index"#should be users/:id
 end
 
 post '/login' do
 	@user = User.find_by(handle: params[:handle])
 	@tweet = Tweet.all
-
 	session[:user_id] = @user.id
-	erb :"users/index"
+	redirect "/users/#{@user.id}"
 
 end

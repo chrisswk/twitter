@@ -17,7 +17,8 @@ end
 post '/signup' do
 	@tweets = Tweet.all
 	@user = User.new(handle: params[:handle], email: params[:email], password_hash: params[:password_hash])
-	if @user.save
+	@user.password = params[:password_hash]
+	if @user.save!
 		session[:user_id] = @user.id
 		redirect "/users/#{@user.id}"
 	else
@@ -28,10 +29,17 @@ post '/signup' do
 end
 
 post '/login' do
-	@user = User.find_by(handle: params[:handle])
-	@tweet = Tweet.all
-	session[:user_id] = @user.id
-	redirect "/users/#{@user.id}"
+	@user = User.find_by_email(params[:email])
+	if @user.password == params[:password_hash]
+		#give_token
+		# session[:user_id] = @user.id
+		# @tweet = Tweet.all
+		session[:user_id] = @user.id
+		redirect "/users/#{@user.id}"
+	else
+		@error_message = "*************Please enter a valid, unique handle, email, and password.*************"
+		erb :index
+	end
 end
 
 get '/home' do

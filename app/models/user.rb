@@ -64,12 +64,14 @@ class User < ActiveRecord::Base
     @password = Password.create(new_password)
     self.password_hash = @password
   end
-end
 
-class EmailValidator < ActiveModel::EachValidator
-  def validate_each(record, attribute, value)
-    unless value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-      record.errors[attribute] << (options[:message] || "is not an email")
+  def login
+    @user = User.find_by_email(param[:email])
+    if @user.password == params[:password]
+      give_token
+    else
+      redirect_to '/'
     end
   end
 end
+

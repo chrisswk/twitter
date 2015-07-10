@@ -6,9 +6,10 @@
 	<% if @error_message %>
 		<p><%= @error_message %></p>
 	<% end %>
+
 	<form class="standard_form" action="/login" method="post">
 			<h4>LOGIN</h4>
-	    <input type="text" name="handle" placeholder="handle"></input>
+	    <input type="text" name="email" placeholder="email"></input>
 	    <input type="password" name="password_hash" placeholder="*****"></input>
 	    <input class="submit" type="submit" value="log in">
 	</form>

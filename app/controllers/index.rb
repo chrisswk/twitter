@@ -22,7 +22,7 @@ post '/signup' do
 		redirect "/users/#{@user.id}"
 	else
 		status 404
-		@error_message = "Please enter a valid, unique handle, email, and password."	
+		@error_message = "*************Please enter a valid, unique handle, email, and password.*************"	
 		erb :index
 	end
 end
@@ -31,5 +31,5 @@ post '/login' do
 	@user = User.find_by(handle: params[:handle])
 	@tweet = Tweet.all
 	session[:user_id] = @user.id
-	redirect '/users/#{@user.id}'
+	redirect "/users/#{@user.id}"
 end

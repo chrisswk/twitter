@@ -1,12 +1,15 @@
 <!-- this div shows user info -->
-<div>
+<div class="user-page">
+<div id="user-profile">
+	<img class="profile-img" src="/imgs/myspace-tom.png" alt="tom" height="150" width="150">
+	<div class="user-info">
 	<p>@<%= @user.handle %>'s profile</p>
 	<p>Tweets: <%= @user.tweets.count %></p>
 	<p>Following: <%= @user.followings.count %></p>
 	<p>Followers: <%= @user.followers.count %></p>
-</div>
+	</div>
 
-<div>
+	<div class="follow-button">
 	<% if current_user != @user %>
 		<% if current_user.followings.include? (@user) %>
 			<form action="/users/unfollow" method="post">
@@ -16,47 +19,45 @@
 	  <% else %>
 		  <form action="/users/follow" method="post">
 				<input type="hidden" name="user_id" value="<%= @user.id %>">
-		    <input type="submit" value="Follow <%= @user.handle %>">
+		    <input class="submit" type="submit" value="Follow <%= @user.handle %>">
 		  </form>
 	  <% end %>
 	<% end  %>
+	</div>
+
 </div>
 
-
-
+<!-- new tweet form -->
+<% if @user == current_user %>
+	<div id="tweet-box">
+	  <form action="/tweets/new" method="post">
+	    <textarea name="text" maxlength="140"></textarea>
+	    <input class="submit" type="submit" value="TWEET!!!">
+	  </form>
+	</div>
+	<% else  %>
+	<div id="lulz">
+	<p>We were too lazy to do anything with this blank space. Sorry, not sorry.</p>
+	</div>
+<% end %>
+</div>
 
 <!-- on the current user page: this div contains user tweets and the users who they are following tweets (tweet feed) -->
 <!-- on another users page: this div contains user tweets (tweet feed) -->
-<div>
+<div class="tweet-feed">
 	<ul>
 	<% if @user == current_user %>
 		<% current_user.tweets.each do |tweet|  %>
-			<li><%= tweet.text %> <a href="/users/<%= tweet.user_id %>">@<%= tweet.user.handle %></a></li>
+			<li class="tweet"><%= tweet.text %> <a href="/users/<%= tweet.user_id %>">@<%= tweet.user.handle %></a></li>
 		<% end %>
 	<% end %>
 
 	<% current_user.followings.each do |person|  %>	
 		<% person.tweets.each do |tweet|  %>
-			<li><%= tweet.text %> <a href="/users/<%= person.id %>">@<%= person.handle %></a></li>
+			<li class="tweet"><%= tweet.text %> <a href="/users/<%= person.id %>">@<%= person.handle %></a></li>
 		<% end %>
 	<% end %>
 
 	</ul>
-</div>
-
-
-<!-- new tweet form -->
-<% if @user == current_user %>
-	<div>
-	  <form action="/tweets/new" method="post">
-	    <textarea name="text" maxlength="140"></textarea>
-	    <input type="submit" value="TWEET!!!">
-	  </form>
-	</div>
-<% end %>
-
-<div>
-<a href="/home"><button type="button"> Go Home!</button></a>
-	<a href="/logout"><button type="button">Log out!</button></a>
 </div>
 

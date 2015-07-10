@@ -1,6 +1,8 @@
-<h1>Search Results:</h1>
-<% if @user  %>
-	<p><a href="/users/<%= @user.id %>"><%= @user.handle %></a></p>
-<% else  %>
-	<p>Sorry no such user exists!</p>
-<% end %>
+<div class="results">
+	<h1>Search Results:</h1>
+	<% if @user  %>
+		<p><a href="/users/<%= @user.id %>"><%= @user.handle %></a></p>
+	<% else  %>
+		<p>Sorry no such user exists!</p>
+	<% end %>
+</div>

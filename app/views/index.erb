@@ -6,22 +6,20 @@
 	<% if @error_message %>
 		<p><%= @error_message %></p>
 	<% end %>
-	<form action="/login" method="post">
-	    <label> Enter your handle </label>
-	    <input type="text" name="handle" placeholder="handle"></input>
-	    <label> Password </label>
+
+	<form class="standard_form" action="/login" method="post">
+			<h4>LOGIN</h4>
+	    <input type="text" name="email" placeholder="email"></input>
 	    <input type="password" name="password_hash" placeholder="*****"></input>
-	    <input type="submit" value="Log in!">
+	    <input class="submit" type="submit" value="log in">
 	</form>
 
-	<form action="/signup" method="post">
-	    <label> Enter your user handle </label>
+	<form class="standard_form" action="/signup" method="post">
+			<h4>SIGN UP</h4>
 	    <input type="text" name="handle" placeholder="handle"></input>
-	    <label> Email </label>
 	    <input type="text" name="email" placeholder="john@doe.com"></input>
-	    <label> Password </label>
 	    <input type="password" name="password_hash" placeholder="*****"></input>
-	    <input type="submit" value="Sign me up">
+	    <input class="submit" type="submit" value="sign up">
 	</form>
 <% end %>
 </div>

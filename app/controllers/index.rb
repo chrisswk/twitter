@@ -33,3 +33,10 @@ post '/login' do
 	session[:user_id] = @user.id
 	redirect "/users/#{@user.id}"
 end
+
+get '/home' do
+	@user = User.find(session[:user_id])
+	@tweet = Tweet.all
+	session[:user_id] = @user.id
+	redirect "/users/#{@user.id}"
+end

@@ -1,6 +1,18 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
+  validates :email, uniqueness: true, presence: true 
+  validates :handle, uniqueness: true, presence: true
+  validates :password_hash, presence: true 
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
+    message: "Incorrectly formatted" }
+
+
+  # def email_validator
+  #   self.email.match ..... to test that the format of the email is valid
+  # end
+
+
   has_many :tweets
 
   # people you are following
@@ -11,6 +23,8 @@ class User < ActiveRecord::Base
   # has_many :followerships, foreign_key: :user_following_id, :class_name => "Followship"
   # has_many :followers, through: :followerships, source: :follower
 
+
+  ######Think of 15-27 as one block
   # people the user follows
   has_many :followingships, 
     foreign_key: "user_followed_id", 
@@ -22,7 +36,8 @@ class User < ActiveRecord::Base
     through: :followingships, 
     source: :following
     
-
+  #####################################
+  #Think of 29-38 as another block, establishing  
   # people the user is being followed by
   has_many :followerships, 
     foreign_key: "user_following_id", 
@@ -48,5 +63,13 @@ class User < ActiveRecord::Base
   def password=(new_password)
     @password = Password.create(new_password)
     self.password_hash = @password
+  end
+end
+
+class EmailValidator < ActiveModel::EachValidator
+  def validate_each(record, attribute, value)
+    unless value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+      record.errors[attribute] << (options[:message] || "is not an email")
+    end
   end
 end

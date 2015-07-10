@@ -1,32 +1,45 @@
+Harvey's summary: trying to log in and see what the person was but it wasn't always working.  Trying to log in
+by doing @ plus something.  Follow rather than unfollow.  Following and followers are rendered.  Concern: maybe he
+did too much yesterday and today he will take the back seat.
+
+
 Lil' Twitter
 ------------
+To Implement
+Search backend
+Render a user's history of tweets
+Front end
+Following.  Current user has one array of objects: people they are following and people who are following them
+Seed file
+Assemble presentation
 
-A user can log in                                               ?
+
+A user can log in                                               ?  √
 A user can retweet others' status updates                       =
-A user can see others' profile pages with all their updates     =
-A user can only post status updates of 140 characters or less   !
-A user can post status updates                                  !
-A user can follow other users                                   !
-A user sees a styled site                                       !
-A user has followers                                            ?
-A user can see a list of their followers                        ?
-A user can see a list of who they are following                 ?
-A user can see updates from those they are following            ?
-A user sees a responsively styled stories                    ?              
-A user can see others' profile pages                            =
-A user can link a gravatar image                                ?
-A user has a profile pages                                      =
+A user can see others' profile pages with all their updates     =  
+A user can only post status updates of 140 characters or less   !  √
+A user can post status updates                                  !  √
+A user can follow other users                                   !  ?
+A user sees a styled site                                       !  
+A user has followers                                            ?  ?
+A user can see a list of their followers                        ?  ?
+A user can see a list of who they are following                 ?  ?
+A user can see updates from those they are following            ?  ?
+A user sees a responsively styled stories                       ?  ?              
+A user can see others' profile pages                            =  ?
+A user can link a gravatar image                                ?  ?
+A user has a profile pages                                      =  √
 
 Add your own user stories                         
 
-Favoriting
-Private twitter account
-Photo sharing?
-Search functionality
-Hashtags
-Links, link shortening
-Cookies/sessions
-Edit profiles
+Favoriting  √
+Private twitter account ?
+Photo sharing?  ?
+Search functionality  ?
+Hashtags  ?
+Links, link shortening  ?
+Cookies/sessions √?
+Edit profiles ?
 
 http://www.w3schools.com/tags/att_input_maxlength.asp
 

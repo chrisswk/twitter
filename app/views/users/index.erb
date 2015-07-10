@@ -22,47 +22,33 @@
 	<% end  %>
 </div>
 
-<p>current user @<%= current_user.handle %></p>
 
 
-<!-- this div contains all the tweets (tweet feed) -->
+
+<!-- on the current user page: this div contains user tweets and the users who they are following tweets (tweet feed) -->
+<!-- on another users page: this div contains user tweets (tweet feed) -->
 <div>
 	<ul>
 	<% if @user == current_user %>
 		<% current_user.tweets.each do |tweet|  %>
-			<li><%= tweet.text %><a href="/<%= tweet.user_id %>">this is @<%= tweet.user.handle %></a></li>
+			<li><%= tweet.text %> <a href="/users/<%= tweet.user_id %>">@<%= tweet.user.handle %></a></li>
 		<% end %>
 	<% end %>
 
 	<% current_user.followings.each do |person|  %>	
 		<% person.tweets.each do |tweet|  %>
-			<li><%= tweet.text %><a href="/<%= person.id %>">this is @<%= person.handle %></a></li>
+			<li><%= tweet.text %> <a href="/users/<%= person.id %>">@<%= person.handle %></a></li>
 		<% end %>
 	<% end %>
 
 	</ul>
 </div>
 
-<!-- all users -->
-<div>
-	<ul>
-		<% @users.each do |user|  %>
-			<a href="/users/<%= user.id %>"><%= user.handle %></a>
-		<% end %>
-	</ul>
-</div>
 
-<!-- list of followings -->
-
-<!-- list of followers -->
-
-
-<!-- This allows the user to create a new tweet -->
+<!-- new tweet form -->
 <% if @user == current_user %>
 	<div>
-	  <h1>Create a new Tweet!</h1>
 	  <form action="/tweets/new" method="post">
-	    <label> Tweet: </label>
 	    <textarea name="text" maxlength="140"></textarea>
 	    <input type="submit" value="TWEET!!!">
 	  </form>

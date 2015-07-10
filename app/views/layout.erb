@@ -18,8 +18,8 @@
   <title></title>
 </head>
 <body>
-  <form action="/search">
-    <input type="search" name="search_for" placeholder="search for...">
+  <form action="/search" method="post">
+    <input type="search" name="handle">
     <input type="submit" value="Search">
   </form>
   <%= yield %>
